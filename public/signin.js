@@ -1,7 +1,7 @@
 // Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -21,25 +21,24 @@ const auth = getAuth(app);  // Pass 'app' to getAuth()
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
-    const signUpForm = document.getElementById('signUpForm');
+    const signInForm = document.getElementById('signUpForm');
     
     // Event listener for submission
-    signUpForm.addEventListener('submit', function(event) {
+    signInForm.addEventListener('submit', function(event) {
         event.preventDefault();
         
-        const email = document.getElementById('signUpEmail').value;
-        const password = document.getElementById('signUpPassword').value;
+        const email = document.getElementById('signInEmail').value;
+        const password = document.getElementById('signInPassword').value;
         
-        createUserWithEmailAndPassword(auth, email, password)
+        signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                window.location.href = "home.html"
-                // alert("Account created.");
+                alert("Account created.");
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                // alert(errorMessage + " " + errorCode);
+                alert(errorMessage + " " + errorCode);
             });
     });
 });
