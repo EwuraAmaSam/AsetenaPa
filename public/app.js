@@ -1,67 +1,55 @@
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+
+const firebaseConfig = {
+    
+    apiKey: "AIzaSyD4yLgmzNRqNWwhOqFStE3zbhzwYguvBXA",
+
+  authDomain: "asetenapa-d0183.firebaseapp.com",
+  
+  projectId: "asetenapa-d0183",
+  
+  storageBucket: "asetenapa-d0183.firebasestorage.app",
+  
+  messagingSenderId: "511219784343",
+  
+  appId: "1:511219784343:web:2e6b11e8fe9812147ce7d2",
+  
+  measurementId: "G-4LHMQM4GMM"
+  
+};
+
+
+// Initialize Firebase
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth();
+
+
 
 const signUpForm = document.getElementById('signUpForm');
 
-signUpForm.addEventListener('submit', (e)=>{
-    e.preventDefault();
-
+// Event listener for submission
+signUpForm.addEventListener('submit', function (event) {
     const email = document.getElementById('signUpEmail').value;
     const password = document.getElementById('signUpPassword').value;
+    event.preventDefault()
+    // alert("Clicked.")
+    // console.log("Clicked")
 
-
-    // const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         const user = userCredential.user;
-        console.log('User created:', user);
+        alert("Account created.")
     })
-    .catch((error) =>{
+    .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error('Error signing up:', errorCode, errorMessage);
-    }
-    )
+        alert(errorMessage + " " + errorCode)
+    });
 
 
 
-
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const auth = getAuth();
-// createUserWithEmailAndPassword(auth, email, password)
-// .then((userCredential) => {
-//     const user = userCredential.user;
-// })
-// .catch((error) =>{
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-// }
-// )
+})
