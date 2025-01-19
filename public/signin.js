@@ -21,7 +21,7 @@ const auth = getAuth(app);  // Pass 'app' to getAuth()
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
-    const signInForm = document.getElementById('signUpForm');
+    const signInForm = document.getElementById('signInForm');
     
     // Event listener for submission
     signInForm.addEventListener('submit', function(event) {
@@ -33,12 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                alert("Account created.");
+                window.location.href = "home.html"
+                // alert("Account created.");
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                alert(errorMessage + " " + errorCode);
+                // alert(errorMessage + " " + errorCode);
             });
     });
 });
