@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome - AsetenaPa</title>
     <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -15,23 +16,32 @@
             <nav>
                 <a href="#profile">Profile</a>
                 <a href="#settings">Settings</a>
-                <a href="#logout">Log Out</a>
+                <a href="#logout" class="btn-logout">Log Out</a>
             </nav>
         </header>
 
         <main>
             <section class="welcome-message">
-                <h2>Hello, [User Name]</h2>
-                <p>Thank you for using AsetenaPa to help take care of the elderly. Your account is ready!</p>
+                <h2>Hello,</h2>
+                <p>Welcome to your one-stop elderly care and monitoring platform. We are here to ensure the best care for your loved ones.</p>
             </section>
 
             <section class="features">
-                <h3>Features</h3>
-                <ul>
-                    <li><a href="#care-plan">Create Care Plan</a></li>
-                    <li><a href="#monitoring">Monitor Health</a></li>
-                    <li><a href="#notifications">Notifications</a></li>
-                </ul>
+                <h3>Our Features</h3>
+                <div class="features-grid">
+                    <a href="./control.html" class="feature-card">
+                        <h4>Remote Device Control</h4>
+                        <p>Manage lights, fans, and locks from anywhere with ease.</p>
+                    </a>
+                    <a href="./surveillance.html" class="feature-card">
+                        <h4>Live Surveillance Access</h4>
+                        <p>View real-time security footage to ensure your home is safe.</p>
+                    </a>
+                    <a href="./emergency.html" class="feature-card">
+                        <h4>Emergency Assistance</h4>
+                        <p>Quickly connect with emergency contacts and support services.</p>
+                    </a>
+                </div>
             </section>
         </main>
     </div>

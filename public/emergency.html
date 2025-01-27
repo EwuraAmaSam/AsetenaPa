@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency - AsetenaPa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="emergency.css">
+</head>
+
+<body>
+    <div class="emergency-container">
+        <header>
+            <h1>Emergency Services</h1>
+        </header>
+
+        <main>
+            <section class="emergency-contacts">
+                <h2>Quick Access Emergency Contacts</h2>
+                <div class="contact-list">
+                    <button onclick="callEmergency('911')">Call 911</button>
+                    <button onclick="callEmergency('Fire Department')">Call Fire Department</button>
+                    <button onclick="callEmergency('Medical Emergency')">Call Medical Emergency</button>
+                    <button onclick="callEmergency('Security Services')">Call Security Services</button>
+                </div>
+            </section>
+
+            <section class="report-emergency">
+                <h2>Report an Emergency</h2>
+                <form id="emergency-form">
+                    <label for="emergency-type">Type of Emergency:</label>
+                    <select id="emergency-type" required>
+                        <option value="" disabled selected>Select Emergency Type</option>
+                        <option value="Fire">Fire</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Security">Security</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="emergency-location">Location:</label>
+                    <input type="text" id="emergency-location" placeholder="Enter your location" required>
+
+                    <label for="emergency-description">Description:</label>
+                    <textarea id="emergency-description" rows="4" placeholder="Describe the emergency" required></textarea>
+
+                    <button type="submit">Submit Report</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="emergency.js"></script>
+</body>
+
+</html>
