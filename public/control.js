@@ -10,7 +10,7 @@ const firebaseConfig = {
     messagingSenderId: "511219784343",
     appId: "1:511219784343:web:2e6b11e8fe9812147ce7d2",
     measurementId: "G-4LHMQM4GMM"
-  };
+};
 
 // Initialise firebase
 const app = initializeApp(firebaseConfig);
@@ -22,106 +22,100 @@ let lockOn = false;
 
 function toggleBulb() {
     bulbOn = !bulbOn;
-    // Write new state to firebase
-    set(ref(database, 'device/bulb'), {state: bulbOn});
-    
+    set(ref(database, 'device/bulb'), { state: bulbOn });
+
     const bulbText = document.getElementById('bulb-text');
     const bulbCard = document.getElementById('bulb-card');
     if (bulbOn) {
         bulbText.textContent = "Bulb is On";
-        bulbCard.querySelector('i').style.color = "#ffd700"; // Yellow color for bulb on
+        bulbCard.querySelector('i').style.color = "#ffd700";
     } else {
         bulbText.textContent = "Bulb is Off";
-        bulbCard.querySelector('i').style.color = "#6200ee"; // Default color for bulb off
+        bulbCard.querySelector('i').style.color = "#6200ee";
     }
 }
 
 function toggleFan() {
     fanOn = !fanOn;
-    // Write new state to firebase
-    set(ref(database, 'device/fan'), {state: fanOn});
+    set(ref(database, 'device/fan'), { state: fanOn });
 
     const fanText = document.getElementById('fan-text');
     const fanCard = document.getElementById('fan-card');
     if (fanOn) {
         fanText.textContent = "Fan is On";
-        fanCard.querySelector('i').style.color = "#00bfa5"; // Green for fan on
+        fanCard.querySelector('i').style.color = "#00bfa5";
     } else {
         fanText.textContent = "Fan is Off";
-        fanCard.querySelector('i').style.color = "#6200ee"; // Default color for fan off
+        fanCard.querySelector('i').style.color = "#6200ee";
     }
 }
 
 function toggleLock() {
     lockOn = !lockOn;
-    // Write new state to firebase
-    set(ref(database, 'device/lock'), {state: lockOn});
+    set(ref(database, 'device/lock'), { state: lockOn });
 
     const lockText = document.getElementById('lock-text');
     const lockCard = document.getElementById('lock-card');
     if (lockOn) {
         lockText.textContent = "Lock is Unlocked";
-        lockCard.querySelector('i').classList.replace('fa-lock', 'fa-unlock'); // Change lock to unlock icon
-        lockCard.querySelector('i').style.color = "#f44336"; // Red for unlocked
+        lockCard.querySelector('i').classList.replace('fa-lock', 'fa-unlock');
+        lockCard.querySelector('i').style.color = "#f44336";
     } else {
         lockText.textContent = "Lock is Locked";
-        lockCard.querySelector('i').classList.replace('fa-unlock', 'fa-lock'); // Change unlock to lock icon
-        lockCard.querySelector('i').style.color = "#6200ee"; // Default color for lock
+        lockCard.querySelector('i').classList.replace('fa-unlock', 'fa-lock');
+        lockCard.querySelector('i').style.color = "#6200ee";
     }
 }
 
+document.getElementById('bulb-card').querySelector('button').addEventListener('click', toggleBulb);
+document.getElementById('fan-card').querySelector('button').addEventListener('click', toggleFan);
+document.getElementById('lock-card').querySelector('button').addEventListener('click', toggleLock);
+
+// Firebase listeners
 const bulbRef = ref(database, 'device/bulb');
 const fanRef = ref(database, 'device/fan');
 const lockRef = ref(database, 'device/lock');
 
-
-// Listen for changes in the bulb state
 onValue(bulbRef, (snapshot) => {
     const data = snapshot.val();
     bulbOn = data?.state || false;
-
     const bulbText = document.getElementById('bulb-text');
     const bulbCard = document.getElementById('bulb-card');
     if (bulbOn) {
         bulbText.textContent = "Bulb is On";
-        bulbCard.querySelector('i').style.color = "#ffd700"; // Yellow for bulb on
+        bulbCard.querySelector('i').style.color = "#ffd700";
     } else {
         bulbText.textContent = "Bulb is Off";
-        bulbCard.querySelector('i').style.color = "#6200ee"; // Default color for bulb off
+        bulbCard.querySelector('i').style.color = "#6200ee";
     }
 });
 
 onValue(fanRef, (snapshot) => {
     const data = snapshot.val();
     fanOn = data?.state || false;
-
     const fanText = document.getElementById('fan-text');
     const fanCard = document.getElementById('fan-card');
     if (fanOn) {
         fanText.textContent = "Fan is On";
-        fanCard.querySelector('i').style.color = "#00bfa5"; // Green for fan on
+        fanCard.querySelector('i').style.color = "#00bfa5";
     } else {
         fanText.textContent = "Fan is Off";
-        fanCard.querySelector('i').style.color = "#6200ee"; 
+        fanCard.querySelector('i').style.color = "#6200ee";
     }
 });
 
 onValue(lockRef, (snapshot) => {
     const data = snapshot.val();
     lockOn = data?.state || false;
-
     const lockText = document.getElementById('lock-text');
     const lockCard = document.getElementById('lock-card');
     if (lockOn) {
         lockText.textContent = "Lock is Unlocked";
-        lockCard.querySelector('i').classList.replace('fa-lock', 'fa-unlock'); // Unlock icon
-        lockCard.querySelector('i').style.color = "#f44336"; // Red for unlocked
+        lockCard.querySelector('i').classList.replace('fa-lock', 'fa-unlock');
+        lockCard.querySelector('i').style.color = "#f44336";
     } else {
         lockText.textContent = "Lock is Locked";
-        lockCard.querySelector('i').classList.replace('fa-unlock', 'fa-lock'); // Lock icon
-        lockCard.querySelector('i').style.color = "#6200ee"; 
+        lockCard.querySelector('i').classList.replace('fa-unlock', 'fa-lock');
+        lockCard.querySelector('i').style.color = "#6200ee";
     }
 });
-
-
-
