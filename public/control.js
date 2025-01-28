@@ -12,7 +12,7 @@ const firebaseConfig = {
     measurementId: "G-4LHMQM4GMM"
 };
 
-// Initialise firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
@@ -67,9 +67,9 @@ function toggleLock() {
     }
 }
 
-document.getElementById('bulb-card').querySelector('button').addEventListener('click', toggleBulb);
-document.getElementById('fan-card').querySelector('button').addEventListener('click', toggleFan);
-document.getElementById('lock-card').querySelector('button').addEventListener('click', toggleLock);
+document.getElementById('bulb-button').addEventListener('click', toggleBulb);
+document.getElementById('fan-button').addEventListener('click', toggleFan);
+document.getElementById('lock-button').addEventListener('click', toggleLock);
 
 // Firebase listeners
 const bulbRef = ref(database, 'device/bulb');
