@@ -52,7 +52,7 @@ function initializeSignIn() {
     });
 }
 
-// Make sure the DOM is fully loaded before initializing
+// Check whether the DOM is fully loaded before initializing
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeSignIn);
 } else {

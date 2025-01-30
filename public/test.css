@@ -1,0 +1,93 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.control-container {
+    text-align: center;
+}
+
+
+.sensor-data {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.sensor-item {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+.sensor-item:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.sensor-item i {
+    font-size: 24px;
+    color: #6200ee;
+}
+
+.sensor-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.device-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 15px;
+    display: inline-block;
+    width: 200px;
+    transition: box-shadow 0.3s ease;
+}
+
+.device-card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.device-card i {
+    font-size: 48px;
+    color: #6200ee;
+}
+
+.device-card p {
+    margin: 15px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+button {
+    background-color: #6200ee;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3700b3;
+}

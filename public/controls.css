@@ -12,6 +12,40 @@ body {
     text-align: center;
 }
 
+
+.sensor-data {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.sensor-item {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+.sensor-item:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.sensor-item i {
+    font-size: 24px;
+    color: #6200ee;
+}
+
+.sensor-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
 h1 {
     margin-bottom: 20px;
     color: #333;
