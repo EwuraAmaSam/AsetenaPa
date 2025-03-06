@@ -1,6 +1,6 @@
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 
     // Firebase configuration (same as in your sign-in and sign-up pages)
     const firebaseConfig = {
@@ -27,3 +27,17 @@
             console.log("User is logged in:", user.email);
         }
     });
+
+    // Logout 
+    document.querySelector(".btn-logout").addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent default behavior
+
+    signOut(auth)
+        .then(() => {
+            console.log("User signed out successfully");
+            window.location.href = "signin.html"; // Redirect to sign in page after logout
+        })
+        .catch((error) => {
+            console.error("Error signing out:", error);
+        });
+});
