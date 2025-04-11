@@ -22,24 +22,30 @@ const auth = getAuth(app);
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
     const signUpForm = document.getElementById('signUpForm');
-    
+
+    // Register the service worker
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/service-worker.js")
+            .then((reg) => console.log("Service Worker Registered!", reg))
+            .catch((err) => console.error("Service Worker Registration Failed!", err));
+    }
+
     // Event listener for submission
     signUpForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        
+
         const email = document.getElementById('signUpEmail').value;
         const password = document.getElementById('signUpPassword').value;
-        
+
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                window.location.href = "home.html"
-                // alert("Account created.");
+                window.location.href = "home.html";
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                // alert(errorMessage + " " + errorCode);
+                console.error(errorMessage, errorCode);
             });
     });
 });

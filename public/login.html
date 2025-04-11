@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Sign In</title>
+</head>
+<body>
+    <button id="connectButton">Connect with MetaMask</button>
+    <button id="signInButton" style="display:none;">Sign In</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.0/web3.min.js"></script>
+    <script>
+        const connectButton = document.getElementById("connectButton");
+        const signInButton = document.getElementById("signInButton");
+
+        // Check if MetaMask is installed
+        if (window.ethereum) {
+            const web3 = new Web3(window.ethereum);
+
+            connectButton.addEventListener('click', async () => {
+                try {
+                    // Request account access
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const userAddress = accounts[0];
+                    console.log("Connected to MetaMask with address:", userAddress);
+
+                    // Hide the connect button and show sign-in button
+                    connectButton.style.display = 'none';
+                    signInButton.style.display = 'block';
+
+                    // Store the user's address for later use
+                    signInButton.addEventListener('click', async () => {
+                        // Sign a message to authenticate
+                        const message = "Please sign this message to log in";
+                        const signature = await web3.eth.personal.sign(message, userAddress, '');
+                        console.log("Signature:", signature);
+
+                        // You can send the signature to your backend to verify it
+                        // Example of a backend verification (not shown here)
+                    });
+                } catch (err) {
+                    console.error("User denied MetaMask access", err);
+                }
+            });
+        } else {
+            alert("MetaMask is not installed. Please install it to proceed.");
+        }
+    </script>
+</body>
+</html>

@@ -15,7 +15,6 @@ function callEmergency(service) {
             phoneNumber = "+233205552741"; 
             break;
         default:
-            // alert("No valid phone number available.");
             return;
     }
 
