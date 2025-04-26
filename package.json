@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@metamask/sdk": "^0.32.1",
+    "web3": "^4.16.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-webmanifest": "^2.14.4",
+    "parcel": "^2.14.4"
+  }
+}

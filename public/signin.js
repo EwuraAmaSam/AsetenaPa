@@ -96,5 +96,5 @@ if (window.ethereum) {
     }
   });
 } else {
-  alert("MetaMask not detected. Please install MetaMask to proceed.");
+  alert("MetaMask not detected.");
 }
